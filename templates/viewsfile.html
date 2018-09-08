@@ -1,0 +1,29 @@
+<h1>views.py </h1>
+<textarea cols="40" rows="20" name="views" >
+def homepage(request):
+
+    #return HttpResponse('Hello')
+    #return render(request, 'home.html', {'hithere':'this is me'})
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+    
+def counts(request):
+    fulltext=request.GET['fulltext']
+    #print (fulltext)
+    wordlist=fulltext.split()
+    wordcountdictionary={}
+    for word in wordlist:
+        if word in wordcountdictionary:
+            wordcountdictionary[word]+=1
+        else:
+            wordcountdictionary[word]=1
+    
+    sortedw= sorted(wordcountdictionary.items(), key=operator.itemgetter(1), reverse=True)
+    return render(request, 'count.html', {'fulltext':fulltext, 'count':len(wordlist), 'wordcountdictionary': sortedw})
+</textarea>
+<br />
+<a href="{% url 'home' %}">Start again</a>
+<br />
+<a href="{% url 'about' %}">return to About page</a>

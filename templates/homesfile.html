@@ -1,0 +1,20 @@
+<h1>home.html </h1>
+<textarea cols="40" rows="20" name="home" >
+
+<h1>Welcome to WordCount</h1>
+'
+<form action="{% url 'count' %}">
+<textarea cols="40" rows="10" name="fulltext" ></textarea>
+<br />
+<input type="submit" value="Count!" />
+
+</form>
+<form action="{% url 'about' %}">
+<input type="submit" value="About" />
+</form>
+'
+</textarea>
+<br />
+<a href="{% url 'home' %}">Start again</a>
+<br />
+<a href="{% url 'about' %}">return to About page</a>
